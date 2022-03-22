@@ -1,47 +1,61 @@
-import ParticlesBg from 'particles-bg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import SectionContainer from './components/SectionContainer';
-import Title from './components/Title';
-import Subtitle from './components/Subtitle';
-import Button from './components/Button';
+import NavBar from './components/NavBar';
+import HomeSection from './components/pageSections/HomeSection';
+import Footer from './components/Footer';
 
-function App() {
-  const config = {
-    num: [4, 7],
-    rps: 0.1,
-    radius: [5, 40],
-    life: [1.5, 3],
-    v: [2, 3],
-    tha: [-40, 40],
-    // body: "./img/icon.png", // Whether to render pictures
-    // rotate: [0, 20],
-    alpha: [0.6, 0],
-    scale: [1, 0.1],
-    position: 'center', // all or center or {x:1,y:1,width:100,height:100}
-    color: ['random', '#ff0000'],
-    cross: 'dead', // cross or bround
-    random: 15, // or null,
-    g: 5, // gravity
-    // f: [2, -1], // force
+import GlobalStyle from './styles/GlobalStyle';
+import theme from './styles/theme';
+
+const App = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [scrollHeight, setScrollHeight] = useState(0);
+  const [navIsFixed, setNavIsFixed] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleResizeWindow = () => {
+    setWindowWidth(window.innerWidth);
+    setWindowHeight(window.innerHeight);
   };
 
-  const handleClickPortfolio = () => {
-    console.log('portfolio');
+  useEffect(() => {
+    window.addEventListener('resize', handleResizeWindow);
+    return () => window.removeEventListener('resize', handleResizeWindow);
+  }, []);
+
+  useEffect(() => {
+    const handleScrollPage = () => {
+      setScrollHeight(window.pageYOffset);
+      if (scrollHeight >= windowHeight) {
+        setNavIsFixed(true);
+      } else {
+        setNavIsFixed(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollPage);
+    return () => window.removeEventListener('scroll', handleScrollPage);
+  }, [scrollHeight]);
+
+  const handleOpenMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
-    <>
-      <SectionContainer style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)'}}>
-        <ParticlesBg type="cobweb" config={config} bg={true} />
-        <Title>Sophie Haugland</Title>
-        <Subtitle>Front-end developer</Subtitle>
-        <Button text="Portfolio" handleClick={handleClickPortfolio} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <SectionContainer home={true} id="home" style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)' }}>
+        <HomeSection />
+        <NavBar fixed={navIsFixed} />
       </SectionContainer>
-      <SectionContainer>
-
-      </SectionContainer>
-    </>
+      <SectionContainer id="portfolio">portfolio stuff</SectionContainer>
+      <SectionContainer id="about">about stuff</SectionContainer>
+      <SectionContainer id="contact">contact stuff</SectionContainer>
+      <Footer />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
