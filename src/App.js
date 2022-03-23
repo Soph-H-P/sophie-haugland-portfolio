@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import SectionContainer from './components/SectionContainer';
-import NavBar from './components/NavBar';
+import SectionContainer from './components/atoms/SectionContainer';
+import NavBar from './components/molecules/NavBar';
+import Footer from './components/molecules/Footer';
 import HomeSection from './components/pageSections/HomeSection';
-import Footer from './components/Footer';
+import PortfolioSection from './components/pageSections/PortfolioSection';
+import AboutSection from './components/pageSections/AboutSection';
+import ContactSection from './components/pageSections/ContactSection';
 
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
 
 const App = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 600);
   const [scrollHeight, setScrollHeight] = useState(0);
   const [navIsFixed, setNavIsFixed] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleResizeWindow = () => {
-    setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);
+    setIsDesktop(window.innerWidth >= 600);
   };
 
   useEffect(() => {
@@ -28,31 +30,41 @@ const App = () => {
   useEffect(() => {
     const handleScrollPage = () => {
       setScrollHeight(window.pageYOffset);
-      if (scrollHeight >= windowHeight) {
-        setNavIsFixed(true);
+      if (isDesktop) {
+        if (scrollHeight >= windowHeight) {
+          setNavIsFixed(true);
+        } else {
+          setNavIsFixed(false);
+        }
       } else {
-        setNavIsFixed(false);
+        if (scrollHeight >= 68) {
+          setNavIsFixed(true);
+        } else {
+          setNavIsFixed(false);
+        }
       }
     };
 
     window.addEventListener('scroll', handleScrollPage);
     return () => window.removeEventListener('scroll', handleScrollPage);
-  }, [scrollHeight]);
-
-  const handleOpenMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  }, [scrollHeight, windowHeight, isDesktop]);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <SectionContainer home={true} id="home" style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)' }}>
         <HomeSection />
-        <NavBar fixed={navIsFixed} />
+        <NavBar fixed={navIsFixed} isDesktop={isDesktop} />
       </SectionContainer>
-      <SectionContainer id="portfolio">portfolio stuff</SectionContainer>
-      <SectionContainer id="about">about stuff</SectionContainer>
-      <SectionContainer id="contact">contact stuff</SectionContainer>
+      <SectionContainer id="portfolio">
+        <PortfolioSection />
+      </SectionContainer>
+      <SectionContainer id="about">
+        <AboutSection />
+      </SectionContainer>
+      <SectionContainer id="contact" style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)' }}>
+        <ContactSection />
+      </SectionContainer>
       <Footer />
     </ThemeProvider>
   );

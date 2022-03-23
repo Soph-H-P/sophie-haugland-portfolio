@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import StyledAnchor from './StyledAnchor';
+import StyledAnchor from '../atoms/StyledAnchor';
 
 const StyledNav = styled.nav`
   position: absolute;
-  bottom: -68px;
+  bottom: -80px;
   left: 0px;
   background-color: ${(props) => props.theme.darkFontColor};
   color: ${(props) => props.theme.lightFontColor};
@@ -26,12 +26,21 @@ const StyledNav = styled.nav`
       position: fixed;
       top: 0px;
       bottom: unset;
+
+      @media (max-width: 600px) {
+        bottom: 0px;
+        top: unset;
+      }
     `}
+
+  @media (max-width: 550px) {
+    padding: 20px 10px;
+  }
 `;
 
-const NavBar = ({ fixed }) => {
+const NavBar = ({ fixed, isDesktop }) => {
   return (
-    <StyledNav fixed={fixed}>
+    <StyledNav fixed={fixed} desktop={isDesktop}>
       <div>
         <StyledAnchor text="Home" href={'#home'} anchorType={'nav'} />
         <StyledAnchor text="Portfolio" href={'#portfolio'} anchorType={'nav'} />

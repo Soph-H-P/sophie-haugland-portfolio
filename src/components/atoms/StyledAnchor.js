@@ -42,7 +42,7 @@ const StyledA = styled.a`
       text-transform: uppercase;
 
       @media (max-width: 650px) {
-        font-size: 16px;
+        font-size: 14px;
       }
 
       &:hover {

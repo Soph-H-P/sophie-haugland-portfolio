@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import linkedIn from '../assets/linkedin.svg';
-import gitHub from '../assets/github.svg';
+import linkedIn from '../../assets/linkedin.svg';
+import gitHub from '../../assets/github.svg';
 
-import StyledAnchor from './StyledAnchor';
+import StyledAnchor from '../atoms/StyledAnchor';
 
 const StyledFooter = styled.footer`
   background-color: ${(props) => props.theme.darkFontColor};
@@ -15,6 +15,10 @@ const StyledFooter = styled.footer`
   div {
     display: flex;
     flex-direction: row;
+  }
+
+  @media (max-width: 600px) {
+    padding: 20px 20px 68px 20px;
   }
 
   @media (max-width: 650px) {
