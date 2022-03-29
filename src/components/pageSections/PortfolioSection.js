@@ -21,14 +21,6 @@ const ProjectsContainer = styled.div`
   width: 100%;
   max-width: 999px;
   margin: 40px auto;
-
-  &::after {
-    content: '';
-    margin-top: 30px;
-    width: 80%;
-    height: 2px;
-    background: ${(props) => props.theme.darkFontColor};
-  }
 `;
 
 const PortfolioSection = () => {

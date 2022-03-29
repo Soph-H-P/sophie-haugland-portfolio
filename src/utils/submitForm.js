@@ -11,7 +11,12 @@ const handleContactFormSubmit = async (e, setMessageIsSent, setIsError) => {
       method,
       body,
     });
-    response.ok ? setMessageIsSent(true) : setMessageIsSent(false);
+    if (response.ok) {
+      setMessageIsSent(true);
+      formData.reset();
+    } else {
+      setMessageIsSent(false);
+    }
   } catch (error) {
     setIsError(true);
     console.log(error);

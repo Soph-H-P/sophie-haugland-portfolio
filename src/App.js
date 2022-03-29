@@ -59,10 +59,10 @@ const App = () => {
       <SectionContainer id="portfolio">
         <PortfolioSection />
       </SectionContainer>
-      <SectionContainer id="about">
+      <SectionContainer id="about" aboutSection={true}>
         <AboutSection />
       </SectionContainer>
-      <SectionContainer id="contact" style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)' }}>
+      <SectionContainer id="contact" contact={true} style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)' }}>
         <ContactSection />
       </SectionContainer>
       <Footer />

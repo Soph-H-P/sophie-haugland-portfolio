@@ -1,17 +1,48 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const SectionContainer = styled.section`
   display: flex;
+  position: relative;
   flex-direction: column;
-  justify-content: ${(props) => (props.home ? 'center' : 'start')};
+  justify-content: center;
   align-items: center;
   height: ${(props) => (props.home ? 'calc(100vh + 68px)' : 'max-content')};
   padding: 20px 0px;
-  scroll-margin-top: 68px;
+  scroll-margin-top: ${(props) => (props.contact ? '-150px' : '0px')};
 
-  @media (max-width: 600px) {
-    scroll-margin-top: 0px;
-  }
+  ${(props) =>
+    props.home &&
+    css`
+      justify-content: center;
+      height: 100vh;
+    `}
+
+  ${(props) =>
+    props.aboutSection &&
+    css`
+      &::before {
+        content: '';
+        height: 3px;
+        width: 80%;
+        background: ${(props) => props.theme.darkFontColor};
+        position: absolute;
+        top: 0px;
+        border-radius: 2px;
+      }
+    `}
+
+  ${(props) =>
+    !props.home &&
+    css`
+      padding-top: 100px;
+      @media (min-height: 900px) and (max-height: 1100px) {
+        height: 100vh;
+      }
+
+      @media (max-width: 600px) {
+        scroll-margin-top: 0px;
+      }
+    `}
 `;
 
 export default SectionContainer;

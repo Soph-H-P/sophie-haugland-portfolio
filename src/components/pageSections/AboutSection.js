@@ -24,6 +24,7 @@ const AboutSection = () => {
   return (
     <>
       <Subtitle dark="dark">About</Subtitle>
+      <Profile />
       <SkillsContainer>
         <Skill
           imgSrc={responsive}
@@ -42,7 +43,6 @@ const AboutSection = () => {
         />
         <Skill imgSrc={development} skillName="Back-end" description="Familiar with Node.js" />
       </SkillsContainer>
-      <Profile />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Subtitle from '../atoms/Subtitle';
@@ -60,6 +60,12 @@ const InputContainer = styled.div`
 const ContactSection = () => {
   const [messageIsSent, setMessageIsSent] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    setMessageIsSent(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Subtitle>Contact</Subtitle>
@@ -70,18 +76,23 @@ const ContactSection = () => {
       >
         {messageIsSent && <p>Your message has been sent</p>}
         <InputContainer>
-          <label for="full-name">Name</label>
+          <label htmlFor="full-name">Name</label>
           <input type="text" id="full-name" name="full-name" required />
         </InputContainer>
 
         <InputContainer>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" required />
         </InputContainer>
 
         <InputContainer>
-          <label for="message">Message</label>
-          <textarea id="message" required></textarea>
+          <label htmlFor="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required />
+        </InputContainer>
+
+        <InputContainer>
+          <label htmlFor="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
           <p>
             Characters remaining: <span id="character-count">500</span>
           </p>
@@ -89,7 +100,6 @@ const ContactSection = () => {
         {isError && <p>There was an error sending the message, please try again later.</p>}
         <button
           type="submit"
-          className="send_button contact_form_submit_button cta blue_snail"
           // disabled="true"
           aria-label="send"
         >
