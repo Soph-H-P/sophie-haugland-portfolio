@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Button } from 'antd';
+import PreviewModal from '../atoms/PreviewModal';
 
-const ProjectCardContainer = styled.div`
+const ProjectCardContainer = styled(Button)`
   display: flex;
   flex-direction: column;
   width: 200px;
   align-items: center;
   text-align: center;
   margin-bottom: 25px;
+  position: relative;
 
   img {
     width: 160px;
@@ -26,13 +29,41 @@ const ProjectCardContainer = styled.div`
   }
 `;
 
-const ProjectCard = ({ imgSrc, projectName, description }) => {
+const ProjectCard = ({ imgSrc, projectName, description, siteLink }) => {
+  const [previewModalOpen, setPreviewModalOpen] = useState(false);
+
+  const showModal = (e) => {
+    setPreviewModalOpen(true);
+    console.log('tricked you!!!');
+  };
+
+  const handleCancel = () => {
+    setPreviewModalOpen(false);
+    console.log(previewModalOpen);
+  };
+
   return (
-    <ProjectCardContainer>
-      <img src={imgSrc} alt={projectName} />
-      <h3>{projectName}</h3>
-      <p>{description}</p>
-    </ProjectCardContainer>
+    <>
+      <PreviewModal
+        previewModalOpen={previewModalOpen}
+        setPreviewModalOpen={setPreviewModalOpen}
+        projectName={projectName}
+        siteLink={siteLink}
+        showModal={showModal}
+        handleCancel={handleCancel}
+      ></PreviewModal>
+      <ProjectCardContainer
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          showModal(e);
+        }}
+      >
+        <img src={imgSrc} alt={projectName} />
+        <h3>{projectName}</h3>
+        <p>{description}</p>
+      </ProjectCardContainer>
+    </>
   );
 };
 
