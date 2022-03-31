@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import 'antd/dist/antd.min.css';
 
 import Loader from './Loader';
+import StyledAnchor from './StyledAnchor';
 
 const StyledModal = styled(Modal)`
   width: 100% !important;
@@ -95,6 +96,15 @@ const IframeContainer = styled.div`
 
 const InfoContainer = styled.div`
   width: 50%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  div:last-child {
+    display: flex;
+    align-self: end;
+  }
 
   @media (max-width: 760px) {
     width: 100%;
@@ -108,6 +118,7 @@ const PreviewModal = ({
   handleCancel,
   projectType,
   longDescription,
+  gitHub,
 }) => {
   const [iFrameIsLoaded, setIFrameIsLoaded] = useState(false);
 
@@ -132,8 +143,24 @@ const PreviewModal = ({
           </IframeContainer>
         )}
         <InfoContainer>
-          <h3>{projectType}</h3>
-          <p>{longDescription}</p>
+          <div>
+            <h3>{projectType}</h3>
+            <p>{longDescription}</p>
+          </div>
+          <div>
+            <StyledAnchor
+              text={'GitHub Repo'}
+              href={gitHub}
+              anchorType={'button'}
+              target="_blank"
+            />
+            <StyledAnchor
+              text={'Visit site'}
+              href={siteLink}
+              anchorType={'button'}
+              target="_blank"
+            />
+          </div>
         </InfoContainer>
       </StyledModal>
     </>

@@ -8,7 +8,7 @@ const LoaderContainer = styled.div`
   position: absolute;
   opacity: ${(props) => (props.loaded ? 0 : 1)};
   background: ${(props) => props.theme.lightFontColor};
-  z-index: 1000;
+  z-index:  ${(props) => (props.loaded ? 0 : 1000)};
 `;
 
 const Loader = ({ isLoaded }) => {

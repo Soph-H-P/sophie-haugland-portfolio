@@ -31,6 +31,7 @@ const PortfolioSection = () => {
               siteLink={project.externalLink}
               projectType={project.type}
               longDescription={project.longDescription}
+              gitHub={project.gitHub}
             />
           );
         })}

@@ -43,7 +43,7 @@ const projects = [
     description: 'E-commerce site displaying and selling shoes',
     imageSrc: tracks,
     type: 'Web development and design',
-    externalLink: undefined,
+    externalLink: tracks,
     gitHub: 'https://github.com/Soph-H-P/app',
     longDescription:
       'Using a Strapi backend and React on the front end this was an e-commerce site for shoes. Through a series of user tests this site was checked for usability and accessibility. React gives quick loading times. Using styled components this website is fully responsive on all devices.',
