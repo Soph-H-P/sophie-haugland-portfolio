@@ -32,6 +32,15 @@ const ProjectCardContainer = styled(Button)`
     font-weight: 300;
   }
 
+  @media (min-width: 1200px) {
+    width: 250px;
+    height: 300px;
+
+    img {
+      width: 220px;
+    }
+  }
+
   &:hover {
     color: ${(props) => props.theme.darkFontColor};
     animation: cardpulse 0.6s ease;
@@ -58,9 +67,16 @@ const ProjectCardContainer = styled(Button)`
   }
 `;
 
-const ProjectCard = ({ imgSrc, projectName, description, siteLink, projectType, longDescription, gitHub }) => {
+const ProjectCard = ({
+  imgSrc,
+  projectName,
+  description,
+  siteLink,
+  projectType,
+  longDescription,
+  gitHub,
+}) => {
   const [previewModalOpen, setPreviewModalOpen] = useState(false);
-
 
   const showModal = () => {
     setPreviewModalOpen(true);

@@ -43,10 +43,46 @@ const NavBar = ({ fixed, isDesktop }) => {
   return (
     <StyledNav fixed={fixed} desktop={isDesktop}>
       <div>
-        <StyledAnchor text="Home" href={'#home'} anchorType={'nav'} />
-        <StyledAnchor text="Portfolio" href={'#portfolio'} anchorType={'nav'} />
-        <StyledAnchor text="About" href={'#about'} anchorType={'nav'} />
-        <StyledAnchor text="Contact" href={'#contact'} anchorType={'nav'} />
+        <StyledAnchor
+          activeClass="active"
+          to="home"
+          spy={true}
+          smooth={true}
+          duration={500}
+          anchortype={'nav'}
+        >
+          Home
+        </StyledAnchor>
+        <StyledAnchor
+          activeClass="active"
+          to="portfolio"
+          spy={true}
+          smooth={true}
+          duration={500}
+          anchortype={'nav'}
+        >
+          Portfolio
+        </StyledAnchor>
+        <StyledAnchor
+          activeClass="active"
+          to="about"
+          spy={true}
+          smooth={true}
+          duration={500}
+          anchortype={'nav'}
+        >
+          About
+        </StyledAnchor>
+        <StyledAnchor
+          activeClass="active"
+          to="contact"
+          spy={true}
+          smooth={true}
+          duration={500}
+          anchortype={'nav'}
+        >
+          Contact
+        </StyledAnchor>
       </div>
     </StyledNav>
   );

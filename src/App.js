@@ -62,7 +62,11 @@ const App = () => {
       <SectionContainer id="about" aboutSection={true}>
         <AboutSection />
       </SectionContainer>
-      <SectionContainer id="contact" contact={true} style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)' }}>
+      <SectionContainer
+        id="contact"
+        contact={true}
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.66)' }}
+      >
         <ContactSection />
       </SectionContainer>
       <Footer />

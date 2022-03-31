@@ -35,12 +35,12 @@ const SectionContainer = styled.section`
     !props.home &&
     css`
       padding-top: 100px;
-      @media (min-height: 900px) and (max-height: 1100px) {
+      @media (min-height: 900px) and (max-height: 1100px) and (min-width: 900px) {
         height: 100vh;
       }
 
       @media (max-width: 600px) {
-        scroll-margin-top: 0px;
+        scroll-margin-top: -68px;
       }
     `}
 `;

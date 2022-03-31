@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import 'antd/dist/antd.min.css';
 
 import Loader from './Loader';
-import StyledAnchor from './StyledAnchor';
+import { StyledATag } from './StyledAnchor';
 
 const StyledModal = styled(Modal)`
   width: 100% !important;
@@ -17,6 +17,8 @@ const StyledModal = styled(Modal)`
   .ant-modal-body {
     display: flex;
     width: 100%;
+    font-size: 18px;
+    padding: 10px 24px 24px 24px;
   }
 
   .ant-modal-header {
@@ -41,6 +43,7 @@ const StyledModal = styled(Modal)`
 
   h3 {
     font-family: ${(props) => props.theme.headingFont};
+    font-size: 21px;
   }
 
   @media (max-width: 760px) {
@@ -61,9 +64,10 @@ const IframeContainer = styled.div`
   iframe {
     width: 134%;
     height: 134%;
-    border: 0px;
     zoom: 0.75;
-    border: 5px solid ${(props) => props.theme.primaryColor};
+    border-radius: 5px;
+    border-width: 30px 5px 5px 5px;
+    border-color: ${(props) => props.theme.primaryColor};
     padding: 5px;
     -moz-transform: scale(0.75);
     -moz-transform-origin: 0 0;
@@ -88,7 +92,6 @@ const IframeContainer = styled.div`
       -webkit-transform-origin: 0 0;
       width: 183%;
       height: 183%;
-      border: 0px;
       margin-right: 0px;
     }
   }
@@ -104,6 +107,7 @@ const InfoContainer = styled.div`
   div:last-child {
     display: flex;
     align-self: end;
+    align-items: center;
   }
 
   @media (max-width: 760px) {
@@ -124,7 +128,6 @@ const PreviewModal = ({
 
   const handleIframeLoad = () => {
     setIFrameIsLoaded(true);
-    console.log('I loaded"""!!!!1');
   };
 
   return (
@@ -148,18 +151,8 @@ const PreviewModal = ({
             <p>{longDescription}</p>
           </div>
           <div>
-            <StyledAnchor
-              text={'GitHub Repo'}
-              href={gitHub}
-              anchorType={'button'}
-              target="_blank"
-            />
-            <StyledAnchor
-              text={'Visit site'}
-              href={siteLink}
-              anchorType={'button'}
-              target="_blank"
-            />
+            <StyledATag text={'GitHub Repo'} href={gitHub} anchorType={'ghost'} target="_blank" />
+            <StyledATag text={'Visit site'} href={siteLink} anchorType={'button'} target="_blank" />
           </div>
         </InfoContainer>
       </StyledModal>

@@ -14,6 +14,10 @@ const ProjectsContainer = styled.div`
   width: 100%;
   max-width: 999px;
   margin: 40px auto;
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
 `;
 
 const PortfolioSection = () => {

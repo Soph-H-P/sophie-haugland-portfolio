@@ -11,7 +11,15 @@ const HomeSection = () => {
       <ParticlesBg type="cobweb" bg={true} />
       <Title>Sophie Haugland</Title>
       <Subtitle>Front-end developer</Subtitle>
-      <StyledAnchor text="Portfolio" href={'#portfolio'} anchorType={'button'} />
+      <StyledAnchor
+          to="portfolio"
+          spy={true}
+          smooth={true}
+          duration={500}
+          anchortype={'button'}
+        >
+          Portfolio
+        </StyledAnchor>
     </>
   );
 };
