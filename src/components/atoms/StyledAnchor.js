@@ -30,6 +30,7 @@ const StyledA = styled.a`
       }
 
       &:hover {
+        color: ${(props) => props.theme.lightFontColor};
         animation: buttonpulse 0.3s ease;
         animation-iteration-count: 1;
       }

@@ -5,6 +5,8 @@ const theme = {
   headingFontHighlight: "'Zilla Slab Highlight', sans-serif",
   headingFont: "'Zilla Slab', sans-serif",
   primaryFont: 'Quicksand, sans-serif',
+  boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.4)",
+  boxShadowNone: "0px 5px 10px #fff",
 };
 
 export default theme;

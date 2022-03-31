@@ -29,6 +29,8 @@ const PortfolioSection = () => {
               projectName={project.name}
               description={project.description}
               siteLink={project.externalLink}
+              projectType={project.type}
+              longDescription={project.longDescription}
             />
           );
         })}

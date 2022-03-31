@@ -6,11 +6,15 @@ import PreviewModal from '../atoms/PreviewModal';
 const ProjectCardContainer = styled(Button)`
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 230px;
+  height: 270px;
   align-items: center;
   text-align: center;
   margin-bottom: 25px;
-  position: relative;
+  white-space: unset;
+  border: none;
+  padding: 10px 5px;
+  box-shadow: ${(props) => props.theme.boxShadowNone};
 
   img {
     width: 160px;
@@ -23,23 +27,47 @@ const ProjectCardContainer = styled(Button)`
   }
 
   p {
-    font-size: 21px;
+    font-size: 18px;
     margin: 5px;
     font-weight: 300;
   }
+
+  &:hover {
+    color: ${(props) => props.theme.darkFontColor};
+    animation: cardpulse 0.6s ease;
+    animation-iteration-count: 1;
+  }
+
+  &:focus {
+    color: ${(props) => props.theme.darkFontColor};
+  }
+
+  @keyframes cardpulse {
+    0% {
+      transform: scale(1);
+      box-shadow: ${(props) => props.theme.boxShadowNone};
+    }
+    50% {
+      transform: scale(1.01);
+      box-shadow: ${(props) => props.theme.boxShadow};
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: ${(props) => props.theme.boxShadowNone};
+    }
+  }
 `;
 
-const ProjectCard = ({ imgSrc, projectName, description, siteLink }) => {
+const ProjectCard = ({ imgSrc, projectName, description, siteLink, projectType, longDescription }) => {
   const [previewModalOpen, setPreviewModalOpen] = useState(false);
 
-  const showModal = (e) => {
+
+  const showModal = () => {
     setPreviewModalOpen(true);
-    console.log('tricked you!!!');
   };
 
   const handleCancel = () => {
     setPreviewModalOpen(false);
-    console.log(previewModalOpen);
   };
 
   return (
@@ -51,12 +79,12 @@ const ProjectCard = ({ imgSrc, projectName, description, siteLink }) => {
         siteLink={siteLink}
         showModal={showModal}
         handleCancel={handleCancel}
+        projectType={projectType}
+        longDescription={longDescription}
       ></PreviewModal>
       <ProjectCardContainer
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          showModal(e);
+        onClick={() => {
+          showModal();
         }}
       >
         <img src={imgSrc} alt={projectName} />
