@@ -20,6 +20,23 @@ const StyledAnchor = styled(Link)`
   }
 
   ${(props) =>
+    props.anchortype === 'nav' &&
+    css`
+      padding: 5px;
+      text-transform: uppercase;
+
+      @media (max-width: 650px) {
+        font-size: 14px;
+      }
+
+      &:hover {
+        color: ${(props) => props.theme.primaryColor};
+        animation: navpulse 0.3s ease;
+        animation-iteration-count: 1;
+      }
+    `}
+
+  ${(props) =>
     props.anchortype === 'button' &&
     css`
       width: 216px;
@@ -145,23 +162,6 @@ const StyledA = styled.a`
 
       &:hover {
         color: ${(props) => props.theme.darkFontColor};
-      }
-    `}
-
-  ${(props) =>
-    props.anchortype === 'nav' &&
-    css`
-      padding: 5px;
-      text-transform: uppercase;
-
-      @media (max-width: 650px) {
-        font-size: 14px;
-      }
-
-      &:hover {
-        color: ${(props) => props.theme.primaryColor};
-        animation: navpulse 0.3s ease;
-        animation-iteration-count: 1;
       }
     `}
 

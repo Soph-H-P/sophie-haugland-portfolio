@@ -116,15 +116,7 @@ const InfoContainer = styled.div`
   }
 `;
 
-const PreviewModal = ({
-  projectName,
-  previewModalOpen,
-  siteLink,
-  handleCancel,
-  projectType,
-  longDescription,
-  gitHub,
-}) => {
+const PreviewModal = ({ project, previewModalOpen, handleCancel }) => {
   const [iFrameIsLoaded, setIFrameIsLoaded] = useState(false);
 
   const handleIframeLoad = () => {
@@ -134,26 +126,41 @@ const PreviewModal = ({
   return (
     <>
       <StyledModal
-        title={projectName}
+        title={project.name}
         visible={previewModalOpen}
         footer={null}
         onCancel={handleCancel}
         centered
       >
-        {siteLink && (
-          <IframeContainer>
-            <Loader isLoaded={iFrameIsLoaded} />
-            <iframe src={siteLink} title={projectName} onLoad={handleIframeLoad}></iframe>
-          </IframeContainer>
-        )}
+        <IframeContainer>
+          <Loader isLoaded={iFrameIsLoaded} />
+          <iframe
+            src={project.externalLink ? project.externalLink : project.imageSrc}
+            title={project.name}
+            onLoad={handleIframeLoad}
+          ></iframe>
+        </IframeContainer>
+
         <InfoContainer>
           <div>
-            <h3>{projectType}</h3>
-            <p>{longDescription}</p>
+            <h3>{project.type}</h3>
+            <p>{project.longDescription}</p>
           </div>
           <div>
-            <StyledATag text={'GitHub Repo'} href={gitHub} anchorType={'ghost'} target="_blank" />
-            <StyledATag text={'Visit site'} href={siteLink} anchorType={'button'} target="_blank" />
+            <StyledATag
+              text={'GitHub Repo'}
+              href={project.gitHub}
+              anchorType={'ghost'}
+              target="_blank"
+            />
+            {project.externalLink && (
+              <StyledATag
+                text={'Visit site'}
+                href={project.externalLink}
+                anchorType={'button'}
+                target="_blank"
+              />
+            )}
           </div>
         </InfoContainer>
       </StyledModal>

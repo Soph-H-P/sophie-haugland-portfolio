@@ -29,13 +29,7 @@ const PortfolioSection = () => {
           return (
             <ProjectCard
               key={project.name}
-              imgSrc={project.imageSrc}
-              projectName={project.name}
-              description={project.description}
-              siteLink={project.externalLink}
-              projectType={project.type}
-              longDescription={project.longDescription}
-              gitHub={project.gitHub}
+              project={project}
             />
           );
         })}

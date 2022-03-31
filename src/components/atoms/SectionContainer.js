@@ -19,7 +19,7 @@ const SectionContainer = styled.section`
   ${(props) =>
     props.contact &&
     css`
-      min-height: 100vh;
+      min-height: calc(100vh - 68px);
     `}
 
   ${(props) =>

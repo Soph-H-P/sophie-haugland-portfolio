@@ -67,15 +67,7 @@ const ProjectCardContainer = styled(Button)`
   }
 `;
 
-const ProjectCard = ({
-  imgSrc,
-  projectName,
-  description,
-  siteLink,
-  projectType,
-  longDescription,
-  gitHub,
-}) => {
+const ProjectCard = ({project}) => {
   const [previewModalOpen, setPreviewModalOpen] = useState(false);
 
   const showModal = () => {
@@ -91,22 +83,18 @@ const ProjectCard = ({
       <PreviewModal
         previewModalOpen={previewModalOpen}
         setPreviewModalOpen={setPreviewModalOpen}
-        projectName={projectName}
-        siteLink={siteLink}
+        project={project}
         showModal={showModal}
         handleCancel={handleCancel}
-        projectType={projectType}
-        longDescription={longDescription}
-        gitHub={gitHub}
       ></PreviewModal>
       <ProjectCardContainer
         onClick={() => {
           showModal();
         }}
       >
-        <img src={imgSrc} alt={projectName} />
-        <h3>{projectName}</h3>
-        <p>{description}</p>
+        <img src={project.imageSrc} alt={project.name} />
+        <h3>{project.name}</h3>
+        <p>{project.description}</p>
       </ProjectCardContainer>
     </>
   );
