@@ -68,7 +68,7 @@ const IframeContainer = styled.div`
     border-radius: 5px;
     border-width: 30px 5px 5px 5px;
     border-color: ${(props) => props.theme.primaryColor};
-    padding: 5px;
+    border-style: solid;
     -moz-transform: scale(0.75);
     -moz-transform-origin: 0 0;
     -o-transform: scale(0.75);
@@ -90,6 +90,7 @@ const IframeContainer = styled.div`
       -o-transform-origin: 0 0;
       -webkit-transform: scale(0.55);
       -webkit-transform-origin: 0 0;
+      border-width: 30px 15px 5px 5px;
       width: 183%;
       height: 183%;
       margin-right: 0px;

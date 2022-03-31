@@ -38,6 +38,7 @@ const InputContainer = styled.div`
   textarea {
     padding: 5px;
     font-size: 20px;
+    color: ${(props) => props.theme.darkFontColor};
   }
 
   label {
@@ -60,11 +61,20 @@ const InputContainer = styled.div`
 const ContactSection = () => {
   const [messageIsSent, setMessageIsSent] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     setMessageIsSent(false);
+    setIsError(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleChange = (e) => {
+    const lengthOfMessage = e.target.value.length;
+    setCharacterCount(500 - lengthOfMessage);
+  };
+
+  const [characterCount, setCharacterCount] = useState(500);
 
   return (
     <>
@@ -72,7 +82,7 @@ const ContactSection = () => {
       <StyledForm
         action="https://soph-web-dev.eu/bug-blog/wp-json/contact-form-7/v1/contact-forms/104/feedback"
         method="post"
-        onSubmit={(e) => handleContactFormSubmit(e, setMessageIsSent, setIsError)}
+        onSubmit={(e) => handleContactFormSubmit(e, setMessageIsSent, setIsError, setIsSending)}
       >
         {messageIsSent && <p>Your message has been sent</p>}
         <InputContainer>
@@ -92,9 +102,17 @@ const ContactSection = () => {
 
         <InputContainer>
           <label htmlFor="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
+          <textarea
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            id="message"
+            name="message"
+            maxLength="500"
+            required
+          ></textarea>
           <p>
-            Characters remaining: <span id="character-count">500</span>
+            Characters remaining: <span id="character-count">{characterCount}</span>
           </p>
         </InputContainer>
         {isError && <p>There was an error sending the message, please try again later.</p>}
@@ -103,7 +121,7 @@ const ContactSection = () => {
           // disabled="true"
           aria-label="send"
         >
-          Send
+          {isSending ? 'Sending' : 'Send'}
         </button>
       </StyledForm>
     </>

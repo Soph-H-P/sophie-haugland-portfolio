@@ -1,6 +1,8 @@
-const handleContactFormSubmit = async (e, setMessageIsSent, setIsError) => {
+const handleContactFormSubmit = async (e, setMessageIsSent, setIsError, setIsSending) => {
   e.preventDefault();
   setIsError(false);
+  setMessageIsSent(false);
+  setIsSending(true);
   const formData = e.target;
 
   const sendFormUrl = formData.action;
@@ -13,12 +15,14 @@ const handleContactFormSubmit = async (e, setMessageIsSent, setIsError) => {
     });
     if (response.ok) {
       setMessageIsSent(true);
+      setIsSending(false);
       formData.reset();
     } else {
       setMessageIsSent(false);
     }
   } catch (error) {
     setIsError(true);
+    setIsSending(false);
     console.log(error);
   }
 };

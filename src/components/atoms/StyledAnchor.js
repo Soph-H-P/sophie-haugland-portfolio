@@ -104,7 +104,7 @@ const StyledA = styled.a`
   ${(props) =>
     (props.anchortype === 'button' || props.anchortype === 'ghost') &&
     css`
-      width: 216px;
+      width: 190px;
       height: 60px;
       background: ${(props) => props.theme.darkFontColor};
       border: 3px solid ${(props) => props.theme.lightFontColor};
@@ -130,7 +130,7 @@ const StyledA = styled.a`
   ${(props) =>
     props.anchortype === 'ghost' &&
     css`
-      width: 210px;
+      width: 190px;
       height: 54px;
       background: ${(props) => props.theme.lightFontColor};
       border: 3px solid ${(props) => props.theme.darkFontColor};
@@ -139,8 +139,8 @@ const StyledA = styled.a`
       @media (max-width: 650px) {
         font-size: 18px;
         border: 2px solid ${(props) => props.theme.darkFontColor};
-        width: 150px;
-        height: 50px;
+        width: 146px;
+        height: 46px;
       }
 
       &:hover {

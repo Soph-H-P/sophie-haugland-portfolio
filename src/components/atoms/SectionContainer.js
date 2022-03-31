@@ -16,6 +16,11 @@ const SectionContainer = styled.section`
       justify-content: center;
       height: 100vh;
     `}
+  ${(props) =>
+    props.contact &&
+    css`
+      min-height: 100vh;
+    `}
 
   ${(props) =>
     props.aboutSection &&

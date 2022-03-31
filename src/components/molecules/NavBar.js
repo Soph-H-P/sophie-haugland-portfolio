@@ -6,7 +6,7 @@ import StyledAnchor from '../atoms/StyledAnchor';
 const StyledNav = styled.nav`
   position: absolute;
   z-index: 1000;
-  bottom: -78px;
+  bottom: -75px;
   left: 0px;
   background-color: ${(props) => props.theme.darkFontColor};
   color: ${(props) => props.theme.lightFontColor};
