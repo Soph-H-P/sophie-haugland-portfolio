@@ -6,7 +6,7 @@ import StyledAnchor from '../atoms/StyledAnchor';
 const StyledNav = styled.nav`
   position: absolute;
   z-index: 1000;
-  bottom: -78px;
+  bottom: -85px;
   left: 0px;
   background-color: ${(props) => props.theme.darkFontColor};
   color: ${(props) => props.theme.lightFontColor};
@@ -21,6 +21,14 @@ const StyledNav = styled.nav`
     margin: 0 auto;
   }
 
+  @media (max-width: 650px) {
+    bottom: -72px;
+  }
+
+  @media (max-width: 550px) {
+    padding: 20px 10px;
+  }
+
   ${(props) =>
     props.fixed &&
     css`
@@ -28,15 +36,11 @@ const StyledNav = styled.nav`
       top: 0px;
       bottom: unset;
 
-      @media (max-width: 600px) {
+      @media (max-width: 650px) {
         bottom: 0px;
         top: unset;
       }
     `}
-
-  @media (max-width: 550px) {
-    padding: 20px 10px;
-  }
 `;
 
 const NavBar = ({ fixed, isDesktop }) => {

@@ -13,13 +13,13 @@ import theme from './styles/theme';
 
 const App = () => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 600);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 650);
   const [scrollHeight, setScrollHeight] = useState(0);
   const [navIsFixed, setNavIsFixed] = useState(false);
 
   const handleResizeWindow = () => {
     setWindowHeight(window.innerHeight);
-    setIsDesktop(window.innerWidth >= 600);
+    setIsDesktop(window.innerWidth >= 650);
   };
 
   useEffect(() => {
