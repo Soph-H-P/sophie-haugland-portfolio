@@ -19,6 +19,7 @@ const handleContactFormSubmit = async (e, setMessageIsSent, setIsError, setIsSen
       formData.reset();
     } else {
       setMessageIsSent(false);
+      setIsError(true);
     }
   } catch (error) {
     setIsError(true);

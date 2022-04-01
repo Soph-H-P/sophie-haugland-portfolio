@@ -40,7 +40,7 @@ const SectionContainer = styled.section`
     !props.home &&
     css`
       padding-top: 100px;
-      @media (min-height: 900px) and (max-height: 1100px) and (min-width: 900px) {
+      @media (min-height: 900px) and (max-height: 1310px) and (min-width: 900px) {
         height: 100vh;
       }
 

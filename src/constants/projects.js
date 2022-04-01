@@ -14,7 +14,8 @@ const projects = [
     imageSrc: bugBlog,
     type: 'Web development and design',
     externalLink: 'https://portfolio-updates--where-bugs-unite.netlify.app/',
-    gitHub: '',
+    gitHub:
+      'https://github.com/Noroff-FEU-Assignments/project-exam-1-Soph-H-P/tree/portfolio-updates',
     longDescription:
       'A simple blog site about coding bugs. Our task was to use WordPress to create a headless CMS. The aim was to create a site that was appealing to the target audience and easy to use. We had to include a carrousel to display posts on the home page so users could scroll through. It was a fully responsive design that looks good on all device sizes.',
   },

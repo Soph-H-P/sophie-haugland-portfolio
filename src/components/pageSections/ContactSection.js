@@ -116,12 +116,8 @@ const ContactSection = () => {
           </p>
         </InputContainer>
         {isError && <p>There was an error sending the message, please try again later.</p>}
-        <button
-          type="submit"
-          // disabled="true"
-          aria-label="send"
-        >
-          {isSending ? 'Sending' : 'Send'}
+        <button type="submit" aria-label="send">
+          {isSending && !isError ? 'Sending' : 'Send'}
         </button>
       </StyledForm>
     </>
