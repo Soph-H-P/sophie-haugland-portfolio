@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import up from '../../assets/up.svg';
+
 import Subtitle from '../atoms/Subtitle';
+import StyledAnchor from '../atoms/StyledAnchor';
 
 import handleContactFormSubmit from '../../utils/submitForm';
 
@@ -36,6 +39,7 @@ const InputContainer = styled.div`
 
   input,
   textarea {
+    border: 2px solid ${(props) => props.theme.lightFontColor};
     padding: 5px;
     font-size: 20px;
     color: ${(props) => props.theme.darkFontColor};
@@ -55,6 +59,17 @@ const InputContainer = styled.div`
     label {
       font-size: 16px;
     }
+  }
+`;
+
+const JumpToTopContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: end;
+
+  a {
+    width: 70px;
+    margin-right: 20px;
   }
 `;
 
@@ -120,6 +135,11 @@ const ContactSection = () => {
           {isSending && !isError ? 'Sending' : 'Send'}
         </button>
       </StyledForm>
+      <JumpToTopContainer>
+        <StyledAnchor to="home" spy={true} smooth={true} duration={500} anchortype={'button'}>
+          <img src={up} alt="back to top" />
+        </StyledAnchor>
+      </JumpToTopContainer>
     </>
   );
 };
