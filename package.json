@@ -1,5 +1,6 @@
 {
   "name": "portfolio",
+  "homepage": "https://soph-web-dev.eu",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

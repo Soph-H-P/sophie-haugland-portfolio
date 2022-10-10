@@ -35,8 +35,8 @@ const SectionContainer = styled.section`
         border-radius: 2px;
       }
     `}
-
-  ${(props) =>
+    
+    ${(props) =>
     !props.home &&
     css`
       padding-top: 100px;
@@ -47,6 +47,11 @@ const SectionContainer = styled.section`
       @media (max-width: 600px) {
         scroll-margin-top: -68px;
       }
+    `}
+      ${(props) =>
+    props.portfolioSection &&
+    css`
+      height: max-content !important;
     `}
 `;
 

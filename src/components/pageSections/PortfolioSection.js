@@ -7,13 +7,14 @@ import ProjectCard from '../molecules/ProjectCard';
 import projects from '../../constants/projects';
 
 const ProjectsContainer = styled.div`
-  display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
   width: 100%;
+  padding: 20px;
   max-width: 999px;
   margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
 
   @media (min-width: 1200px) {
     max-width: 1200px;
@@ -26,12 +27,7 @@ const PortfolioSection = () => {
       <Subtitle dark="dark">Portfolio</Subtitle>
       <ProjectsContainer>
         {projects.map((project) => {
-          return (
-            <ProjectCard
-              key={project.name}
-              project={project}
-            />
-          );
+          return <ProjectCard key={project.name} project={project} />;
         })}
       </ProjectsContainer>
     </>

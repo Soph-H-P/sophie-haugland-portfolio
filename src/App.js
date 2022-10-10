@@ -56,7 +56,7 @@ const App = () => {
         <HomeSection />
         <NavBar fixed={navIsFixed} isDesktop={isDesktop} />
       </SectionContainer>
-      <SectionContainer id="portfolio">
+      <SectionContainer id="portfolio" portfolioSection={true}>
         <PortfolioSection />
       </SectionContainer>
       <SectionContainer id="about" aboutSection={true}>
